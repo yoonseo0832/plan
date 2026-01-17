@@ -30,7 +30,7 @@ function openTab(evt, tabName) {
     if(evt) evt.currentTarget.className += " active";
 }
 
-// --- ★ [신규] 연간 체크리스트 저장/로드 로직 ---
+// --- 연간 체크리스트 저장/로드 로직 ---
 function initChecklist() {
     // 체크리스트 영역 안의 모든 체크박스 선택
     const checkboxes = document.querySelectorAll('.checklist-grid input[type="checkbox"]');
