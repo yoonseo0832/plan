@@ -1,226 +1,277 @@
-/* 기본 스타일 */
-body { font-family: 'Noto Sans KR', sans-serif; margin: 0; background-color: #f4f6f9; color: #333; }
-header { background-color: #2c3e50; color: white; text-align: center; padding: 2rem 0; }
-
-/* 탭 네비게이션 */
-.tabs { display: flex; justify-content: center; background-color: #34495e; }
-.tab-link { background: none; border: none; padding: 15px 20px; color: #bdc3c7; cursor: pointer; font-size: 1.1rem; font-weight: bold; transition: 0.3s; }
-.tab-link.active { background-color: #3498db; color: white; }
-.tab-link:hover { color: white; }
-.tab-content { display: none; padding: 20px; max-width: 1000px; margin: 0 auto; animation: fadeEffect 0.5s; }
-@keyframes fadeEffect { from {opacity: 0;} to {opacity: 1;} }
-
-/* 연간 로드맵 (Phase 카드) */
-.phase { margin-bottom: 30px; }
-.phase h2 { border-left: 5px solid #3498db; padding-left: 10px; color: #2c3e50; }
-.month-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 10px; }
-.card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.month-label { background-color: #3498db; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.9rem; margin-bottom: 8px; display: inline-block;}
-.card ul { padding-left: 20px; margin: 0; }
-
-/* 캘린더 스타일 (핵심) */
-.calendar-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: white; padding: 10px 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.calendar-controls button { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #3498db; }
-.calendar-controls h2 { margin: 0; color: #2c3e50; }
-
-.calendar-container { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-.weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; color: #7f8c8d; margin-bottom: 10px; }
-.days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
-
-.day { height: 100px; border: 1px solid #ecf0f1; padding: 5px; cursor: pointer; position: relative; border-radius: 5px; transition: 0.2s; background: white; }
-.day:hover { background-color: #eaf2f8; border-color: #3498db; }
-.day.today { border: 2px solid #3498db; background-color: #f0f8ff; }
-.day.empty { background: none; border: none; cursor: default; }
-
-/* 일정 표시 점 (Dot) */
-.task-dot { height: 8px; width: 8px; background-color: #e74c3c; border-radius: 50%; display: inline-block; margin: 2px; }
-
-/* 모달 스타일 */
-.modal { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 100; }
-.modal-content { background-color: white; margin: 15% auto; padding: 20px; width: 350px; border-radius: 10px; position: relative; }
-.close { position: absolute; right: 15px; top: 10px; font-size: 24px; cursor: pointer; color: #aaa; }
-.input-group { display: flex; gap: 5px; margin-bottom: 15px; }
-.input-group input { flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
-.input-group button { background: #3498db; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
-
-/* 할 일 목록 스타일 */
-.task-list { list-style: none; padding: 0; margin: 0; max-height: 200px; overflow-y: auto; }
-.task-list li { display: flex; justify-content: space-between; padding: 8px; border-bottom: 1px solid #eee; align-items: center; }
-.delete-btn { background: #e74c3c; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 0.8rem; cursor: pointer; line-height: 20px; text-align: center; padding: 0; }
-
-/* --- 아래 내용을 style.css 맨 밑에 붙여넣으세요 --- */
-
-/* 추천 자료실 스타일 */
-.resources-container {
-    margin-top: 50px;
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    border-top: 5px solid #2ecc71; /* 녹색 포인트 */
-}
-
-.resources-container h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.resources-container h3 {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-/* 링크 버튼 그룹 */
-.link-buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-}
-
-.btn-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    color: white;
-    font-weight: bold;
-    transition: transform 0.2s;
-}
-
-.btn-link:hover {
-    transform: translateY(-3px);
-    opacity: 0.9;
-}
-
-.btn-link.qnet { background-color: #3498db; } /* 파랑 */
-.btn-link.gosi { background-color: #e74c3c; } /* 빨강 */
-.btn-link.local { background-color: #f39c12; } /* 주황 */
-
-/* 책/유튜브 그리드 */
-.resource-grid-books {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.book-card {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
-
-.book-card h4 {
-    margin-top: 0;
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
-    display: inline-block;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-}
-
-.book-title {
-    font-weight: bold;
+/* 1. 기본 설정 및 리셋 */
+* { box-sizing: border-box; }
+body {
+    font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
     color: #333;
-    margin-bottom: 5px;
-    font-size: 0.95rem;
+    -webkit-tap-highlight-color: transparent; /* 모바일 터치 하이라이트 제거 */
 }
 
-.book-desc {
-    font-size: 0.85rem;
-    color: #666;
-    margin-bottom: 15px;
+/* 2. 헤더 */
+header {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 1rem;
 }
+header h1 { margin: 0; font-size: 1.5rem; }
+header p { margin: 5px 0 0; font-size: 0.9rem; color: #bdc3c7; }
 
-.youtube-link {
-    display: block; /* 줄바꿈 */
-    text-decoration: none;
-    color: #c4302b; /* 유튜브 레드 */
+/* 3. 탭 네비게이션 (Sticky) */
+.tabs {
+    display: flex;
+    background-color: #34495e;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.tab-link {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 15px 0;
+    color: #bdc3c7;
+    font-size: 1rem;
     font-weight: bold;
-    margin-top: 8px;
-    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.tab-link.active {
+    background-color: #3498db;
+    color: white;
+    border-bottom: 3px solid #fff;
 }
 
-.youtube-link:hover {
-    text-decoration: underline;
-
+/* 4. 컨텐츠 영역 */
+.tab-content {
+    display: none;
+    padding: 20px 15px;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- 아래 코드를 style.css 맨 밑에 붙여넣으세요 --- */
-
-/* 공지사항 보드 스타일 */
+/* 5. 연간 로드맵 스타일 */
 .notice-board {
-    background-color: #fff3cd; /* 연한 노랑 배경 */
-    border: 1px solid #ffeeba;
-    border-left: 5px solid #ffc107; /* 노랑 포인트 */
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    color: #856404;
-}
-
-.notice-board h3 {
-    margin-top: 0;
-    color: #d35400; /* 진한 주황 */
-    border-bottom: 1px solid #ffeeba;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-
-.notice-alert {
     background-color: #fff;
+    border: 1px solid #ffeeba;
+    border-left: 5px solid #ffc107;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.notice-board h3 { margin: 0 0 10px 0; color: #d35400; font-size: 1.1rem; }
+.notice-alert {
+    background-color: #fff3cd;
+    color: #856404;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ffc107;
-    margin-bottom: 15px;
-    color: #e74c3c; /* 빨강 */
-}
-
-.notice-schedule {
-    background-color: rgba(255,255,255,0.5);
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-.notice-schedule h4, .notice-info h4 {
-    margin-top: 0;
     margin-bottom: 10px;
-    color: #2c3e50;
-}
-
-.notice-schedule ul {
-    list-style: none;
-    padding-left: 5px;
-    margin: 0;
-}
-
-.notice-schedule li {
-    margin-bottom: 5px;
     font-size: 0.95rem;
 }
+.notice-schedule ul { padding-left: 20px; margin: 0; font-size: 0.9rem; }
+.highlight-date { background-color: #e74c3c; color: white; padding: 2px 5px; border-radius: 3px; }
 
-.notice-info p {
-    margin: 5px 0;
-    font-size: 0.9rem;
-    line-height: 1.5;
+.phase h2 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    border-left: 5px solid #3498db;
+    padding-left: 10px;
+    margin: 25px 0 15px 0;
 }
 
-.highlight-date {
-    background-color: #e74c3c;
+/* 카드 그리드 (반응형 핵심) */
+.month-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.month-label {
+    display: inline-block;
+    background-color: #3498db;
     color: white;
-    padding: 2px 6px;
-    border-radius: 4px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
     font-weight: bold;
+    margin-bottom: 12px;
+}
+.card ul { margin: 0; padding-left: 20px; line-height: 1.6; font-size: 0.95rem; }
+
+/* 링크 버튼 */
+.link-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.btn-link {
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    flex: 1;
+    text-align: center;
+    min-width: 120px;
+}
+.btn-link.qnet { background-color: #004098; }
+.btn-link.gosi { background-color: #e74c3c; }
+
+/* 6. 월간 플래너 (달력) 스타일 */
+.calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.calendar-controls h2 { margin: 0; font-size: 1.3rem; color: #2c3e50; }
+.calendar-controls button {
+    background: #f0f2f5;
+    border: none;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #3498db;
 }
 
-.sub-text {
+.calendar-container {
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    color: #7f8c8d;
+    padding-bottom: 10px;
+    font-size: 0.9rem;
+}
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+.day {
+    height: 80px; /* PC 기본 높이 */
+    border: 1px solid #ecf0f1;
+    border-radius: 8px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #fff;
+}
+.day:active { background-color: #eaf2f8; }
+.day.today { border: 2px solid #3498db; background-color: #f0f8ff; color: #2980b9; }
+.day.empty { background: none; border: none; cursor: default; }
+
+/* 할 일 점 (Dot) */
+.dots-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-top: 4px;
+}
+.task-dot {
+    width: 6px; height: 6px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+}
+
+.tip-box {
+    text-align: center;
+    margin-top: 15px;
+    color: #7f8c8d;
     font-size: 0.85rem;
-    color: #666;
+}
+
+/* 7. 모달 (팝업) 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(2px);
+}
+.modal-content {
+    background-color: white;
+    margin: 20vh auto;
+    padding: 25px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: slideUp 0.3s;
+}
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.close { position: absolute; right: 20px; top: 15px; font-size: 24px; cursor: pointer; color: #aaa; }
+
+.input-group { display: flex; gap: 8px; margin-bottom: 20px; }
+.input-group input {
+    flex: 1; padding: 10px;
+    border: 1px solid #ddd; border-radius: 8px;
+    font-size: 1rem;
+}
+.input-group button {
+    background: #3498db; color: white;
+    border: none; padding: 0 20px;
+    border-radius: 8px; cursor: pointer;
+}
+
+.task-list { list-style: none; padding: 0; margin: 0; max-height: 250px; overflow-y: auto; }
+.task-list li {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px; border-bottom: 1px solid #eee;
+    font-size: 1rem;
+}
+.delete-btn {
+    background: #ff7675; color: white;
+    border: none; border-radius: 4px;
+    padding: 4px 8px; cursor: pointer; font-size: 0.8rem;
+}
+
+/* ★★★ 모바일 최적화 (반응형) ★★★ */
+@media (max-width: 768px) {
+    header h1 { font-size: 1.3rem; }
+    .tab-link { font-size: 0.9rem; padding: 12px 0; }
+    
+    /* 달력 모바일 스타일 */
+    .day {
+        height: 60px; /* 높이 축소 */
+        font-size: 0.8rem;
+    }
+    .task-dot { width: 5px; height: 5px; }
+    
+    /* 모달 위치 조정 */
+    .modal-content { margin: 30vh auto; }
+    
+    .month-grid { grid-template-columns: 1fr; } /* 카드 한 줄로 */
 }
