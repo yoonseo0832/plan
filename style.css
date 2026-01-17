@@ -196,6 +196,49 @@ header p { margin: 5px 0 0; font-size: 0.9rem; color: #bdc3c7; }
 .tip-box { text-align: center; margin-top: 15px; color: #7f8c8d; font-size: 0.85rem; }
 
 /* 8. 학습 노트 (굿노트 스타일 + 길이 연장) */
+.notes-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.notes-header-container h3 {
+    font-family: 'Gamja Flower', cursive;
+    font-size: 1.5rem;
+    margin: 0;
+    border: none;
+    color: #2c3e50;
+}
+
+/* ★ 예쁜 노션 버튼 스타일 ★ */
+.notion-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: white;
+    color: #37352f;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+.notion-btn:hover {
+    background-color: #fbfbfb;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    border-color: #d0d0d0;
+}
+.notion-btn img {
+    width: 18px;
+    height: 18px;
+}
+
 .note-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -232,10 +275,10 @@ header p { margin: 5px 0 0; font-size: 0.9rem; color: #bdc3c7; }
     transform: scale(1.1); box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* ★ 노트 길이 대폭 증가 및 스크롤 설정 ★ */
+/* 노트 길이 연장 & 스크롤 */
 .note-card textarea {
     width: 100%; 
-    height: 500px; /* 길이를 500px로 늘림 */
+    height: 500px; /* 길이 대폭 증가 */
     border: none; 
     padding: 0 20px;
     font-family: 'Gamja Flower', cursive; 
@@ -247,7 +290,7 @@ header p { margin: 5px 0 0; font-size: 0.9rem; color: #bdc3c7; }
     background-image: repeating-linear-gradient(transparent, transparent 29px, #e5e5e5 30px);
     background-attachment: local;
     margin-top: 10px;
-    overflow-y: auto; /* 내용이 넘치면 스크롤 */
+    overflow-y: auto; /* 스크롤바 생성 */
 }
 .note-card textarea:focus { outline: none; }
 
@@ -258,29 +301,6 @@ header p { margin: 5px 0 0; font-size: 0.9rem; color: #bdc3c7; }
 .note-card:nth-child(4) .note-header { background-color: #fff4bd; } /* Cert */
 .note-card:nth-child(5) .note-header { background-color: #d4f0f0; } /* History */
 .note-card:nth-child(6) .note-header { background-color: #e8e8e8; } /* Project */
-
-/* ★ 노션 버튼 스타일 (신규) ★ */
-.notion-btn {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    color: #333;
-    padding: 6px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: bold;
-    font-family: 'Noto Sans KR', sans-serif; /* 폰트는 고딕 */
-    border: 1px solid #dcdcdc;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: 0.2s;
-}
-.notion-btn:hover {
-    transform: translateY(-2px);
-    background-color: #f7f7f7;
-    border-color: #aaa;
-}
-
 
 /* 9. 모달 */
 .modal {
