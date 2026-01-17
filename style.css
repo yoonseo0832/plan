@@ -112,23 +112,148 @@ header p { margin: 5px 0 0; font-size: 0.9rem; color: #bdc3c7; }
 }
 .card ul { margin: 0; padding-left: 20px; line-height: 1.6; font-size: 0.95rem; }
 
-/* 링크 버튼 */
-.link-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+/* 6. 추천 자료실 및 링크 스타일 */
+.resources-container {
+    margin-top: 40px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-top: 5px solid #2ecc71;
+}
+
+.resources-container h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.link-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
 .btn-link {
     text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 6px;
+    padding: 12px 15px;
+    border-radius: 8px;
     color: white;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     flex: 1;
     text-align: center;
-    min-width: 120px;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s;
 }
+.btn-link:hover { transform: translateY(-2px); opacity: 0.9; }
 .btn-link.qnet { background-color: #004098; }
 .btn-link.gosi { background-color: #e74c3c; }
+.btn-link.local { background-color: #f39c12; }
 
-/* 6. 월간 플래너 (달력) 스타일 */
+/* 책/유튜브 그리드 */
+.resource-grid-books {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.book-card {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.book-card h4 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.book-title { font-weight: bold; color: #333; margin: 0 0 5px 0; font-size: 0.9rem; }
+.book-desc { font-size: 0.85rem; color: #666; margin: 0 0 10px 0; }
+
+.youtube-link {
+    display: block;
+    text-decoration: none;
+    color: #c4302b;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+.youtube-link:hover { text-decoration: underline; }
+
+/* 7. 월간 상세 체크리스트 스타일 */
+.detailed-checklist-section {
+    margin: 40px 0;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+}
+
+.detailed-checklist-section h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.check-month {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    border-left: 4px solid #bdc3c7;
+    transition: transform 0.2s;
+}
+
+.check-month:hover {
+    transform: translateY(-3px);
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.check-month h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #555;
+    font-weight: bold;
+}
+
+.check-month label {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: #444;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.check-month input[type="checkbox"] {
+    margin-right: 8px;
+    margin-top: 3px;
+    accent-color: #3498db;
+    transform: scale(1.1);
+}
+
+/* 8. 월간 플래너 (달력) 스타일 */
 .calendar-controls {
     display: flex;
     justify-content: space-between;
@@ -207,7 +332,7 @@ header p { margin: 5px 0 0; font-size: 0.9rem; color: #bdc3c7; }
     font-size: 0.85rem;
 }
 
-/* 7. 모달 (팝업) 스타일 */
+/* 9. 모달 (팝업) 스타일 */
 .modal {
     display: none;
     position: fixed;
@@ -273,5 +398,7 @@ header p { margin: 5px 0 0; font-size: 0.9rem; color: #bdc3c7; }
     /* 모달 위치 조정 */
     .modal-content { margin: 30vh auto; }
     
-    .month-grid { grid-template-columns: 1fr; } /* 카드 한 줄로 */
+    .month-grid, .checklist-grid, .resource-grid-books { 
+        grid-template-columns: 1fr; /* 카드 한 줄로 */
+    }
 }
