@@ -21,18 +21,19 @@
         <button class="tab-link" onclick="openTab(event, 'MonthlyPlan')">
             <i class="fas fa-calendar-alt"></i> 월간 플래너
         </button>
+        <button class="tab-link" onclick="openTab(event, 'StudyNotes')">
+            <i class="fas fa-book-open"></i> 학습 노트
+        </button>
     </nav>
 
     <div id="YearlyPlan" class="tab-content" style="display: block;">
         
         <div class="notice-board">
             <h3><i class="fas fa-bullhorn"></i> 2026/2027 주요 일정 Check</h3>
-            
             <div class="notice-alert">
                 <strong>[D-DAY 알림]</strong> 1월 24일(토) 10:00 <br>
                 정보처리기사 <strong>빈자리 접수</strong> 광클릭 필수!
             </div>
-
             <div class="notice-schedule">
                 <h4>📅 2026 국가직 9급 일정</h4>
                 <ul>
@@ -44,7 +45,6 @@
         </div>
 
         <div class="roadmap-container">
-            
             <div class="phase">
                 <h2>Phase 1: 기초 & 자격증 (1~2월)</h2>
                 <div class="month-grid">
@@ -133,7 +133,7 @@
 
             <div class="detailed-checklist-section">
                 <h2>✅ 2026 월별 상세 체크리스트 (To-Do)</h2>
-                <div class="checklist-grid">
+                <div class="checklist-grid" id="roadmapChecklist">
                     <div class="check-month">
                         <h3>1월 (JAN)</h3>
                         <label><input type="checkbox"> 1.24(토) 10:00 큐넷 빈자리 접수</label>
@@ -212,7 +212,6 @@
 
             <div class="resources-container">
                 <h3>🔗 필수 링크 & 추천 자료실</h3>
-                
                 <div class="link-buttons">
                     <a href="http://www.q-net.or.kr" target="_blank" class="btn-link qnet">
                         <i class="fas fa-id-card"></i> 큐넷 (기사 접수)
@@ -224,7 +223,6 @@
                         <i class="fas fa-map-marked-alt"></i> 지방직 접수
                     </a>
                 </div>
-
                 <div class="resource-grid-books">
                     <div class="book-card">
                         <h4>🖥️ 정보처리기사</h4>
@@ -235,7 +233,6 @@
                             <i class="fab fa-youtube"></i> 이기쥬히 (실기 요약)
                         </a>
                     </div>
-                    
                     <div class="book-card">
                         <h4>🇺🇸🇰🇷 공통 (영어/한국사)</h4>
                         <div class="book-info">
@@ -246,7 +243,6 @@
                             <i class="fab fa-youtube"></i> 문동균 한국사
                         </a>
                     </div>
-
                     <div class="book-card">
                         <h4>💻 공무원 전공</h4>
                         <div class="book-info">
@@ -256,7 +252,6 @@
                             <i class="fab fa-youtube"></i> 유상통 (유수)
                         </a>
                     </div>
-
                     <div class="book-card">
                         <h4>🐧 리눅스 & OS</h4>
                         <div class="book-info">
@@ -266,7 +261,6 @@
                             <i class="fab fa-youtube"></i> 생활코딩 (리눅스)
                         </a>
                     </div>
-
                     <div class="book-card">
                         <h4>🌐 컴퓨터 네트워크</h4>
                         <div class="book-info">
@@ -278,7 +272,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -288,17 +281,67 @@
             <h2 id="monthYear">2026년 1월</h2>
             <button id="nextBtn" onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
         </div>
-        
         <div class="calendar-container">
             <div class="weekdays">
                 <div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
             </div>
-            <div id="calendar-days" class="days">
-                </div>
+            <div id="calendar-days" class="days"></div>
         </div>
-        
         <div class="tip-box">
             <i class="fas fa-info-circle"></i> 날짜를 터치하여 할 일을 추가/삭제하세요.
+        </div>
+    </div>
+
+    <div id="StudyNotes" class="tab-content">
+        <div class="notice-board" style="border-left-color: #2ecc71; background-color: #e8f8f5;">
+            <h3><i class="fas fa-pen-fancy"></i> 과목별 핵심 요약 노트</h3>
+            <p style="margin:5px 0 0 0; color:#555; font-size:0.95rem;">
+                오늘 공부한 내용이나 안 외워지는 키워드를 적고 <strong>저장 버튼</strong>을 누르세요.
+            </p>
+        </div>
+        <div class="note-grid">
+            <div class="note-card">
+                <div class="note-header" style="background-color: #3498db;">
+                    <h4>🐧 리눅스 / OS</h4>
+                    <i class="fas fa-save" onclick="saveNote('linux')"></i>
+                </div>
+                <textarea id="note-linux" placeholder="chmod 755..."></textarea>
+            </div>
+            <div class="note-card">
+                <div class="note-header" style="background-color: #9b59b6;">
+                    <h4>🌐 네트워크 / 정보보호</h4>
+                    <i class="fas fa-save" onclick="saveNote('network')"></i>
+                </div>
+                <textarea id="note-network" placeholder="OSI 7계층..."></textarea>
+            </div>
+            <div class="note-card">
+                <div class="note-header" style="background-color: #e74c3c;">
+                    <h4>🇺🇸 영어 (TOEIC/공무원)</h4>
+                    <i class="fas fa-save" onclick="saveNote('english')"></i>
+                </div>
+                <textarea id="note-english" placeholder="significant..."></textarea>
+            </div>
+            <div class="note-card">
+                <div class="note-header" style="background-color: #f39c12;">
+                    <h4>🖥️ 정보처리기사</h4>
+                    <i class="fas fa-save" onclick="saveNote('cert')"></i>
+                </div>
+                <textarea id="note-cert" placeholder="디자인 패턴..."></textarea>
+            </div>
+            <div class="note-card">
+                <div class="note-header" style="background-color: #2ecc71;">
+                    <h4>🇰🇷 한국사</h4>
+                    <i class="fas fa-save" onclick="saveNote('history')"></i>
+                </div>
+                <textarea id="note-history" placeholder="삼국통일..."></textarea>
+            </div>
+            <div class="note-card">
+                <div class="note-header" style="background-color: #34495e;">
+                    <h4>💻 알고리즘 / 졸작</h4>
+                    <i class="fas fa-save" onclick="saveNote('project')"></i>
+                </div>
+                <textarea id="note-project" placeholder="BFS/DFS..."></textarea>
+            </div>
         </div>
     </div>
 
@@ -306,14 +349,11 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h3 id="modalDateDisplay">날짜</h3>
-            
             <div class="input-group">
                 <input type="text" id="newTaskInput" placeholder="할 일 입력 (예: 단어 30개)">
                 <button onclick="addTask()"><i class="fas fa-plus"></i></button>
             </div>
-            
-            <ul id="taskList" class="task-list">
-                </ul>
+            <ul id="taskList" class="task-list"></ul>
         </div>
     </div>
 
